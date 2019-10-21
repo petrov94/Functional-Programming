@@ -41,17 +41,23 @@ public final class Movie {
         return actors;
     }
 
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "name='" + name + '\'' +
+                ", date=" + date +
+                ", actors=" + actors +
+                '}';
+    }
+
     public void createActor(String actor) {
         Actor nactor;
         if (actor.contains(",")) {
-            nactor = new Actor(actor.substring(0, actor.indexOf(",")), actor.substring(actor.indexOf(",")+2));
+            nactor = new Actor(actor.substring(actor.indexOf(",")+2),actor.substring(0, actor.indexOf(",")));
         } else {
             nactor = new Actor(actor, null);
         }
         Optional.of(nactor).ifPresent((nact) -> this.actors.add(nact));
     }
-
-
-
 
 }

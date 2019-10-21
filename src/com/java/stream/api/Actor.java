@@ -10,8 +10,16 @@ public final class Actor {
     private String lastName;
 
     public Actor(String  firstName, String lastName){
-        Optional.of(firstName).ifPresent((first)->this.firstName = first);
-        Optional.of(lastName).ifPresent((last)->this.lastName = last);
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "Actor{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 
     @Override
@@ -19,23 +27,40 @@ public final class Actor {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Actor actor = (Actor) o;
-        if (firstName == null) {
-            if (actor.firstName != null)
-                return false;
-        } else if (!firstName.equals(actor.firstName))
-            return false;
-        if (lastName == null) {
-            if (actor.lastName != null)
-                return false;
-        } else if (!lastName.equals(actor.lastName))
-            return false;
-        return true;
+        return Objects.equals(getFirstName(), actor.getFirstName()) &&
+                Objects.equals(getLastName(), actor.getLastName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName);
+        return Objects.hash(getFirstName(), getLastName());
     }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Actor actor = (Actor) o;
+//        if (firstName == null) {
+//            if (actor.firstName != null)
+//                return false;
+//        } else if (!firstName.equals(actor.firstName))
+//            return false;
+//        if (lastName == null) {
+//            if (actor.lastName != null)
+//                return false;
+//        } else if (!lastName.equals(actor.lastName))
+//            return false;
+//        return true;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        final int prime = 31;
+//        int result = 1;
+//        result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+//        result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+//        return result;
+//    }
 
     public String getFirstName() {
         return firstName;

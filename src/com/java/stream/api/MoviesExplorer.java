@@ -5,7 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class MoviesExplorer {
 
@@ -38,4 +40,22 @@ public class MoviesExplorer {
             return movieResult.get(0);
         } else throw new IllegalArgumentException("There is no film with given name.");
     }
+
+    public Collection<Actor> getAllActors(){
+        return this.allMovies.stream().flatMap(e->e.getActors().stream()).collect(Collectors.toList());
+    }
+
+    public int getFirstYear(){
+        return this.allMovies.stream().sorted((e,e1)-> e.getDate()-e1.getDate()).limit(1).mapToInt(e->e.getDate()).sum();
+    }
+
+    public Collection<Movie> getAllMoviesBy(Actor actor){
+        return this.allMovies.stream().filter(e-> e.getActors().contains(actor)).collect(Collectors.toList());
+    }
+
+    public Collection<Movie> getMoviesSortedByReleaseYear(){
+        return this.allMovies.stream().sorted((movie,movie1)->movie.getDate()-movie1.getDate()).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+
 }
