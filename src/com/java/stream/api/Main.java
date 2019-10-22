@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        MoviesExplorer test = new MoviesExplorer("E:\\Repo\\Concurrency\\movies1.txt");
+        MoviesExplorer test = new MoviesExplorer("C:\\Users\\p.petrov\\Desktop\\movies1.txt");
         test.readFile();
 //        List<Movie> list = (ArrayList)test.getMovies();
 //        System.out.println(test.countMoviesReleasedIn(1970));
@@ -19,5 +19,6 @@ public class Main {
 //        System.out.println(test.getFirstYear());
 //        System.out.println(test.getAllMoviesBy(new Actor("Sherri","Zak")).toString());
         System.out.println(test.findMovieWithGreatestNumberOfActors().toString());
+        System.out.println(test.findYearWithLeastNumberOfReleasedMovies());
     }
 }
