@@ -57,5 +57,9 @@ public class MoviesExplorer {
         return this.allMovies.stream().sorted((movie,movie1)->movie.getDate()-movie1.getDate()).collect(Collectors.toCollection(ArrayList::new));
     }
 
+    public Movie findMovieWithGreatestNumberOfActors(){
+        return this.allMovies.stream().sorted((movie,movie1)->movie.getActors().size()-movie1.getActors().size()).limit(1).collect(Collectors.toCollection(ArrayList::new)).get(0);
+    }
+
 
 }

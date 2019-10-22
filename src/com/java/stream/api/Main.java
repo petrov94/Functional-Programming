@@ -18,6 +18,6 @@ public class Main {
 //        test.getAllActors().stream().forEach(e->System.out.println("First name ----" + e.getFirstName() + "---- Last name -----" + e.getLastName()));
 //        System.out.println(test.getFirstYear());
 //        System.out.println(test.getAllMoviesBy(new Actor("Sherri","Zak")).toString());
-        System.out.println(test.getMoviesSortedByReleaseYear().toString());
+        System.out.println(test.findMovieWithGreatestNumberOfActors().toString());
     }
 }
