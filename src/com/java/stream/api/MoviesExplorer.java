@@ -57,5 +57,8 @@ public class MoviesExplorer {
         return this.allMovies.stream().sorted((movie,movie1)->movie.getDate()-movie1.getDate()).collect(Collectors.toCollection(ArrayList::new));
     }
 
-
+    public int findYearWithLeastNumberOfReleasedMovies(){
+        Map<Integer,List<Movie>> result = this.allMovies.stream().collect(Collectors.groupingBy(Movie::getDate));
+        return result.entrySet().stream().sorted(Map.Entry.comparingByValue((list,list1)-> list.size()-list1.size())).limit(1).mapToInt(e-> e.getKey()).sum();
+    }
 }
